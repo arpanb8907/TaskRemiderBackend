@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import router from "./routes/endpoint.js";
+
 
 dotenv.config();
 
@@ -31,6 +33,8 @@ mongoose
     console.error("Failed to connect to MongoDB Atlas:", err.message);
     process.exit(1); // Exit if connection fails
   });
+
+app.use('/',router);
 
 app.listen(port, () => {
   console.log(`server is running on ${port}`);
